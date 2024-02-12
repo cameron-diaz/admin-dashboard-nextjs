@@ -29,13 +29,13 @@
     padding: 10px;
 }
 
-.user {
+.products {
     display: flex;
     gap: 10px;
     align-items: center;
 }
 
-.userImage {
+.productImage {
     border-radius: 50%;
     object-fit: cover;
 }
