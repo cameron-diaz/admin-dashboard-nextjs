@@ -9,8 +9,11 @@ const Search = ({ placeholder }) => {
     const { replace } = useRouter()
     const pathname = usePathname()
 
+    // useDebounce allows the fetch to happen after user is done typing
     const handleSearch = useDebouncedCallback((e) => {
         const params = new URLSearchParams(searchParams)
+
+        params.set('page', 1)
 
         if (e.target.value) {
             e.target.value.length > 2 && params.set('q', e.target.value)
