@@ -30,6 +30,7 @@ const ProductsPage = () => {
                             <div className={styles.products}>
                                 <Image
                                     src="/noproduct.jpg"
+                                    alt=""
                                     width={40}
                                     height={40}
                                     className={styles.productImage}

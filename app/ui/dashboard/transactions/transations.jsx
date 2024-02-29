@@ -21,7 +21,7 @@ const Transations = () => {
                                 <Image
                                     className={styles.userImage}
                                     src={'/noavatar.png'}
-                                    alt=""
+                                    alt="picture"
                                     width={40}
                                     height={40}
                                 />
@@ -44,7 +44,7 @@ const Transations = () => {
                                 <Image
                                     className={styles.userImage}
                                     src={'/noavatar.png'}
-                                    alt=""
+                                    alt="picture"
                                     width={40}
                                     height={40}
                                 />
@@ -65,7 +65,7 @@ const Transations = () => {
                                 <Image
                                     className={styles.userImage}
                                     src={'/noavatar.png'}
-                                    alt=""
+                                    alt="picture"
                                     width={40}
                                     height={40}
                                 />
