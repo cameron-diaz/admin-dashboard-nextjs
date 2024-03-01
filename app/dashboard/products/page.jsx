@@ -4,9 +4,8 @@ import Search from '@/app/ui/dashboard/search/search'
 import styles from '@/app/ui/dashboard/products/products.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
-import { searchParams } from 'next/navigation'
 
-const ProductsPage = async () => {
+const ProductsPage = async ({ searchParams }) => {
     const q = searchParams?.q || ''
     const page = searchParams?.page || 1
     const { products, count } = await fetchProducts(q, page)

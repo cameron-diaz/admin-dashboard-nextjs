@@ -1,8 +1,9 @@
+import { addUser } from '@/app/lib/actions'
 import styles from '@/app/ui/dashboard/users/addUsers/addUsers.module.css'
 const AddUserPage = () => {
     return (
         <div className={styles.container}>
-            <form action="" className={styles.form}>
+            <form action={addUser} className={styles.form}>
                 <input
                     type="text"
                     placeholder="username"
@@ -18,15 +19,13 @@ const AddUserPage = () => {
                 />
                 <input type="phone" placeholder="phone" name="phone" />
                 <select name="isAdmin" id="">
-                    <option value={false} selected>
-                        Is Admin?
-                    </option>
+                    <option value={false}>Is Admin?</option>
                     <option value={true}>Yes</option>
                     <option value={false}>No</option>
                 </select>
                 <select name="isActive" id="">
                     <option value={true} selected>
-                        Is Admin?
+                        Is Active?
                     </option>
                     <option value={true}>Yes</option>
                     <option value={false}>No</option>
