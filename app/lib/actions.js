@@ -26,6 +26,27 @@ export const addUser = async (formData) => {
     revalidatePath("/dashboard/users")
     redirect("/dashboard/users")
 }
+export const updateUser = async (formData) => {
+    const { id, username, email, password, phone, address, isAdmin, isActive } = Object.fromEntries(formData)
+
+    try {
+        connectToDB()
+
+        const updateFields = {
+            username, email, password, phone, address, isAdmin, isActive
+        }
+
+        Object.keys(updateFields).forEach((key) => (updateFields[key] === "" || undefined) && delete updateFields[key])
+
+        await User.findByIdAndUpdate(id, updateFields)
+
+    } catch (error) {
+        throw new Error("Failed to update user!")
+    }
+    // As you as you edit the user, refresh the data on the users page
+    revalidatePath("/dashboard/users")
+    redirect("/dashboard/users")
+}
 
 export const addProduct = async (formData) => {
     const { title, desc, price, stock, color, size } = Object.fromEntries(formData)
@@ -46,6 +67,18 @@ export const addProduct = async (formData) => {
     redirect("/dashboard/products")
 }
 
+export const deleteUser = async (formData) => {
+    const { id } = Object.fromEntries(formData)
+
+    try {
+        connectToDB()
+        await User.findByIdAndDelete(id)
+    } catch (error) {
+        throw new Error("Failed to delete product!")
+    }
+    // As you as you delete new product, refresh the data on the product page
+    revalidatePath("/dashboard/users")
+}
 export const deleteProduct = async (formData) => {
     const { id } = Object.fromEntries(formData)
 

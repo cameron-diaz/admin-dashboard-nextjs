@@ -20,6 +20,26 @@ export const fetchUsers = async (q, page) => {
     }
 }
 
+export const fetchSingleUser = async (id) => {
+    try {
+        connectToDB();
+        const user = await User.findById(id)
+        return user
+    } catch (error) {
+        throw new Error("failed to fetch user")
+    }
+}
+
+export const fetchSingleProduct = async (id) => {
+    try {
+        connectToDB();
+        const product = await Product.findById(id)
+        return product
+    } catch (error) {
+        throw new Error("failed to fetch product")
+    }
+}
+
 export const fetchProducts = async (q, page) => {
 
     // "i" for case insensitive
