@@ -4,6 +4,7 @@ import Search from '@/app/ui/dashboard/search/search'
 import styles from '@/app/ui/dashboard/products/products.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
+import { deleteProduct } from '@/app/lib/actions'
 
 const ProductsPage = async ({ searchParams }) => {
     const q = searchParams?.q || ''
@@ -14,7 +15,7 @@ const ProductsPage = async ({ searchParams }) => {
         <div className={styles.container}>
             <div className={styles.top}>
                 <Search placeholder="Search for a Product..." />
-                <Link href="/dashboards/products/add">
+                <Link href="/dashboard/products/add">
                     <button className={styles.addButton}>Add New</button>
                 </Link>
             </div>
@@ -47,7 +48,7 @@ const ProductsPage = async ({ searchParams }) => {
                             <td>{product.desc}</td>
                             <td>${product.price}</td>
                             <td>
-                                {product.createdAt?.toString().splice(4, 16)}
+                                {product.createdAt?.toString().slice(4, 16)}
                             </td>
                             <td>{product.stock}</td>
                             <td>
@@ -61,13 +62,18 @@ const ProductsPage = async ({ searchParams }) => {
                                             View
                                         </button>
                                     </Link>
-                                    <Link href="/">
+                                    <form action={deleteProduct}>
+                                        <input
+                                            type="hidden"
+                                            value={product.id}
+                                            name="id"
+                                        />
                                         <button
                                             className={`${styles.button} ${styles.delete}`}
                                         >
                                             Delete
                                         </button>
-                                    </Link>
+                                    </form>
                                 </div>
                             </td>
                         </tr>
