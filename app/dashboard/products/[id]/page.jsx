@@ -1,27 +1,53 @@
+import { fetchSingleProduct } from '@/app/lib/data'
+import { updateProduct } from '@/app/lib/actions'
 import styles from '@/app/ui/dashboard/Products/singleProduct/singleProduct.module.css'
 import Image from 'next/image'
 
-const SingleUserPage = () => {
+const SingleProductPage = async ({ params }) => {
+    const { id } = params
+    const product = await fetchSingleProduct(id)
+
     return (
         <div className={styles.container}>
             <div className={styles.infoContainer}>
                 <div className={styles.imgContainer}>
                     <Image src="/noavatar.png" alt="" fill />
                 </div>
-                IPhone
+                {product.title}
             </div>
             <div className={styles.formContainer}>
-                <form className={styles.form}>
+                <form className={styles.form} action={updateProduct}>
+                    <input type="hidden" name="id" value={product.id} />
                     <label>Title</label>
-                    <input type="text" name="title" placeholder="Title" />
+                    <input
+                        type="text"
+                        name="title"
+                        placeholder={product.title}
+                    />
                     <label>Price</label>
-                    <input type="number" name="price" placeholder="$$$" />
+                    <input
+                        type="number"
+                        name="price"
+                        placeholder={product.price}
+                    />
                     <label>Stock</label>
-                    <input type="number" name="stock" placeholder="25" />
+                    <input
+                        type="number"
+                        name="stock"
+                        placeholder={product.stock}
+                    />
                     <label>Color</label>
-                    <input type="text" name="color" placeholder="Red" />
+                    <input
+                        type="text"
+                        name="color"
+                        placeholder={product.color}
+                    />
                     <label>Size</label>
-                    <textarea type="text" name="size" placeholder="New York" />
+                    <textarea
+                        type="text"
+                        name="size"
+                        placeholder={product.size}
+                    />
                     <label>Category</label>
                     <select name="cat" id="cat">
                         <option value={true}>Kitchen</option>
@@ -37,7 +63,7 @@ const SingleUserPage = () => {
                         name="desc"
                         id="desc"
                         rows={10}
-                        placeholder="description"
+                        placeholder={product.desc}
                     ></textarea>
                     <button>Update</button>
                 </form>
@@ -46,4 +72,4 @@ const SingleUserPage = () => {
     )
 }
 
-export default SingleUserPage
+export default SingleProductPage

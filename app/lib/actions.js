@@ -47,6 +47,27 @@ export const updateUser = async (formData) => {
     revalidatePath("/dashboard/users")
     redirect("/dashboard/users")
 }
+export const updateProduct = async (formData) => {
+    const { id, title, desc, price, stock, color, size } = Object.fromEntries(formData)
+
+    try {
+        connectToDB()
+
+        const updateFields = {
+            title, desc, price, stock, color, size
+        }
+
+        Object.keys(updateFields).forEach((key) => (updateFields[key] === "" || undefined) && delete updateFields[key])
+
+        await Product.findByIdAndUpdate(id, updateFields)
+
+    } catch (error) {
+        throw new Error("Failed to update product!")
+    }
+    // As you as you edit the user, refresh the data on the users page
+    revalidatePath("/dashboard/products")
+    redirect("/dashboard/products")
+}
 
 export const addProduct = async (formData) => {
     const { title, desc, price, stock, color, size } = Object.fromEntries(formData)

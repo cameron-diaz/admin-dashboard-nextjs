@@ -38,13 +38,21 @@ const SingleUserPage = async ({ params }) => {
                     />
                     <label>Is Admin?</label>
                     <select name="isAdmin" id="isAdmin">
-                        <option value={true}>Yes</option>
-                        <option value={false}>No</option>
+                        <option value={true} selected={user.IsAdmin}>
+                            Yes
+                        </option>
+                        <option value={false} selected={!user.IsAdmin}>
+                            No
+                        </option>
                     </select>
                     <label>Is Active?</label>
-                    <select name="isAdmin" id="isAdmin">
-                        <option value={true}>Yes</option>
-                        <option value={false}>No</option>
+                    <select name="isActive" id="isActive">
+                        <option value={true} selected={user.IsActive}>
+                            Yes
+                        </option>
+                        <option value={false} selected={!user.IsActive}>
+                            No
+                        </option>
                     </select>
                     <button>Update</button>
                 </form>
