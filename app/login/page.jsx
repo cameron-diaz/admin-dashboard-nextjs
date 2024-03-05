@@ -1,14 +1,10 @@
 import styles from '@/app/ui/login/login.module.css'
+import LoginForm from '../ui/login/loginForm/loginForm'
 
 const Login = () => {
     return (
         <div className={styles.container}>
-            <form className={styles.form}>
-                <h1>Login</h1>
-                <input type="text" placeholder="username" />
-                <input type="text" placeholder="password" />
-                <button>Login</button>
-            </form>
+            <LoginForm />
         </div>
     )
 }
