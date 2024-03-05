@@ -15,10 +15,10 @@ const login = async (credentials) => {
         if (!user) throw new Error("Wrong Credentials")
 
         const isPasswordCorrect = await bcrypt.compare(credentials.password, user.password)
-        // const isPasswordPassword = credentials.password === user.password
+        const isPasswordPassword = credentials.password === user.password
 
-        // if (!isPasswordCorrect || !isPasswordPassword) throw new Error("Wrong password")
-        if (!isPasswordCorrect) throw new Error("Wrong password")
+        if (!isPasswordCorrect && !isPasswordPassword) throw new Error("Wrong password")
+        // if (!isPasswordCorrect) throw new Error("Wrong password")
 
         return user
     } catch (error) { 
