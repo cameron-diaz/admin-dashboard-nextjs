@@ -96,7 +96,7 @@ const Sidebar = async () => {
                     <span className={styles.userTitle}>Admin</span>
                 </div>
             </div>
-            <ul>
+            <ul className={styles.list}>
                 {menuItems.map((category) => (
                     <li key={category.title}>
                         <span className={styles.category}>
